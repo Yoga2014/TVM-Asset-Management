@@ -1,0 +1,17 @@
+<nav class="sidebar-nav">
+
+  <!-- ADMIN -->
+  <ng-container *ngIf="isAdmin()">
+    <a routerLink="/admin" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/admin/assets" routerLinkActive="active">Assets</a>
+    <a routerLink="/admin/assign" routerLinkActive="active">Assign Asset</a>
+    <a routerLink="/admin/history" routerLinkActive="active">Asset History</a>
+  </ng-container>
+
+  <!-- EMPLOYEE -->
+  <ng-container *ngIf="isEmployee()">
+    <a routerLink="/employee" routerLinkActive="active">My Dashboard</a>
+    <a routerLink="/employee/history" routerLinkActive="active">My Asset History</a>
+  </ng-container>
+
+</nav>

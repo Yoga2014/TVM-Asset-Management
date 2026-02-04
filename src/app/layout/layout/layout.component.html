@@ -1,0 +1,27 @@
+<div class="layout-root">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <button class="menu-btn" (click)="toggleSidebar()">☰</button>
+    <span class="title">Asset Management</span>
+
+    <span class="spacer"></span>
+
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </header>
+
+  <!-- BODY -->
+  <div class="layout-body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" [class.collapsed]="!sidebarOpen">
+      <app-sidebar></app-sidebar>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+</div>
