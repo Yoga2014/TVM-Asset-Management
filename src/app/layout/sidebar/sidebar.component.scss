@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+/* SIDEBAR NAV */
+.sidebar-nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* 🔥 TOP ALIGN (NOT CENTER) */
+  justify-content: flex-start;
+
+  /* 🔥 SPACE FROM TOPBAR */
+  padding: 24px 16px 16px;
+  box-sizing: border-box;
+}
+
+/* MENU LINKS */
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+
+  height: 44px;
+  padding: 0 16px;
+
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+
+  border-radius: 8px;
+  margin-bottom: 10px;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* HOVER */
+.sidebar-nav a:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+/* ACTIVE */
+.sidebar-nav a.active {
+  background: #475569;
+  color: #ffffff;
+}
