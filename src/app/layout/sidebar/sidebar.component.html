@@ -1,17 +1,52 @@
 <nav class="sidebar-nav">
 
-  <!-- ADMIN -->
+  <!-- ADMIN MENU -->
   <ng-container *ngIf="isAdmin()">
-    <a routerLink="/admin" routerLinkActive="active">Dashboard</a>
-    <a routerLink="/admin/assets" routerLinkActive="active">Assets</a>
-    <a routerLink="/admin/assign" routerLinkActive="active">Assign Asset</a>
-    <a routerLink="/admin/history" routerLinkActive="active">Asset History</a>
+
+    <a routerLink="/admin" routerLinkActive="active">
+      Dashboard
+    </a>
+
+    <!-- Assets Parent -->
+    <a class="parent" (click)="toggleAssets()">
+      Assets
+      <span class="arrow">
+        {{ isAssetsOpen() ? '▾' : '▸' }}
+      </span>
+    </a>
+
+    <!-- Assets Submenu -->
+    <ul class="submenu" *ngIf="isAssetsOpen()">
+      <li>
+        <a routerLink="/admin/asset-register" routerLinkActive="active">
+          Assign Asset
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/admin/asset-list" routerLinkActive="active">
+          Asset Register List
+        </a>
+      </li>
+    </ul>
+
+    <a routerLink="/admin/history" routerLinkActive="active">
+      Asset History
+    </a>
+
   </ng-container>
 
-  <!-- EMPLOYEE -->
+  <!-- EMPLOYEE MENU -->
   <ng-container *ngIf="isEmployee()">
-    <a routerLink="/employee" routerLinkActive="active">My Dashboard</a>
-    <a routerLink="/employee/history" routerLinkActive="active">My Asset History</a>
+
+    <a routerLink="/employee" routerLinkActive="active">
+      My Dashboard
+    </a>
+
+    <a routerLink="/employee/history" routerLinkActive="active">
+      My Asset History
+    </a>
+
   </ng-container>
 
 </nav>

@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { AssetregisterService } from '../../assetregister.service';
 
 @Component({
   selector: 'app-assetregister',
@@ -44,7 +45,7 @@ categories: string[] = [
   imageError = false;
   MAX_IMAGES = 2;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder , private assetService: AssetregisterService) {
     this.assetForm = this.fb.group({
       assetName: ['', Validators.required],
       assetId: ['', Validators.required],
@@ -117,33 +118,29 @@ categories: string[] = [
     });
   }
 
-  submit(): void {
-    if (this.assetForm.invalid) {
-      this.assetForm.markAllAsTouched();
-      return;
-    }
-
-    const category = this.assetForm.get('category')?.value;
-
-    if (
-      (category === 'Laptop' || category === 'Mobile') &&
-      this.selectedFiles.length === 0
-    ) {
-      alert('Images are required for Laptop and Mobile assets');
-      return;
-    }
-
-    const formData = new FormData();
-    const formValue = this.assetForm.getRawValue();
-
-    Object.keys(formValue).forEach(key => {
-      formData.append(key, formValue[key]);
-    });
-
-    this.selectedFiles.forEach(file => {
-      formData.append('images', file);
-    });
-
-    console.log('Assigned Asset Data:', formValue);
+submit(): void {
+  if (this.assetForm.invalid) {
+    this.assetForm.markAllAsTouched();
+    return;
   }
+
+  const formValue = this.assetForm.getRawValue();
+
+  const asset = {
+    name: formValue.assetName,
+    id: formValue.assetId,
+    category: formValue.category,
+    assignedDate: formValue.assignedDate,
+    status: 'Excellent' as 'Excellent' // default
+  };
+
+  this.assetService.addAsset(asset);
+
+  this.assetForm.reset();
+  this.imagePreviews = [];
+  this.selectedFiles = [];
+
+  alert('Asset assigned successfully');
+}
+
 }
