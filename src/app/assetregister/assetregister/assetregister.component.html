@@ -1,0 +1,82 @@
+<div class="page">
+  <mat-card class="asset-card">
+    <h2 class="title">Assign Asset</h2>
+    <p class="subtitle">Asset conditions are applied automatically</p>
+
+    <form [formGroup]="assetForm">
+
+      <div class="grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Asset Name</mat-label>
+          <input matInput formControlName="assetName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Asset ID</mat-label>
+          <input matInput formControlName="assetId">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select
+            formControlName="category"
+            (selectionChange)="onCategoryChange($event.value)">
+            <mat-option *ngFor="let c of categories" [value]="c">
+              {{ c }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+     <mat-form-field appearance="outline">
+          <mat-label>Asset conditions</mat-label>
+          <input matInput formControlName="assetId">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Assigned Date</mat-label>
+          <input matInput [matDatepicker]="dp" formControlName="assignedDate">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Employee ID</mat-label>
+          <input matInput formControlName="employeeId">
+        </mat-form-field>
+
+       <mat-form-field appearance="outline">
+          <mat-label>Employee Name</mat-label>
+          <input matInput formControlName="assetId">
+        </mat-form-field>
+      </div>
+
+      <div class="upload">
+        <input
+          type="file"
+          #fileInput
+          hidden
+          accept="image/*"
+          (change)="onImageUpload($event)"
+        />
+
+        <button mat-stroked-button type="button" (click)="fileInput.click()">
+          <mat-icon>image</mat-icon>
+          Upload Images
+        </button>
+
+        <small class="error" *ngIf="imageError">
+          Only {{ MAX_IMAGES }} image(s) allowed
+        </small>
+
+        <div class="preview" *ngIf="imagePreviews.length">
+          <img *ngFor="let img of imagePreviews" [src]="img">
+        </div>
+      </div>
+
+      <button mat-raised-button color="primary" class="submit" (click)="submit()">
+        Assign Asset
+      </button>
+
+    </form>
+  </mat-card>
+</div>
