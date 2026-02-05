@@ -37,5 +37,11 @@ export const ADMIN_ROUTES: Routes = [
     loadComponent: () =>
       import('../assetregister/assetregister/assetregister.component')
         .then(c => c.AssetregisterComponent)
+  },
+  {
+    path:'asset-list',
+    loadComponent: ()=>
+    import('../asset-list/asset-list.component')
+    .then(c=>c.AssetListComponent)
   }
 ];

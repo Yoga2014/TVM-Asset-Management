@@ -1,0 +1,52 @@
+<div class="page">
+  <div class="card">
+
+    <h2>All Registered Assets</h2>
+
+    <div class="filters">
+      <input
+        type="text"
+        placeholder="Search assets..."
+        [(ngModel)]="search" />
+
+      <select [(ngModel)]="category">
+        <option value="All">All</option>
+        <option value="Laptop">Laptop</option>
+        <option value="Mobile">Mobile</option>
+        <option value="Charger">Charger</option>
+        <option value="SIM Card">SIM Card</option>
+      </select>
+    </div>
+
+    <table *ngIf="filteredAssets.length; else noData">
+      <thead>
+        <tr>
+          <th>Asset Name</th>
+          <th>Asset ID</th>
+          <th>Category</th>
+          <th>Assigned Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let asset of filteredAssets">
+          <td>{{ asset.name }}</td>
+          <td>{{ asset.id }}</td>
+          <td>{{ asset.category }}</td>
+          <td>{{ asset.assignedDate | date:'dd/MM/yyyy' }}</td>
+          <td>
+            <span class="badge" [ngClass]="asset.status.toLowerCase()">
+              {{ asset.status }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noData>
+      <p class="empty">No assets registered yet</p>
+    </ng-template>
+
+  </div>
+</div>
