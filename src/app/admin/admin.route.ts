@@ -31,5 +31,11 @@ export const ADMIN_ROUTES: Routes = [
     loadComponent: () =>
       import('./assethistory/assethistory.component')
         .then(c => c.HistoryComponent)
+  },
+    {
+    path: 'asset-register',
+    loadComponent: () =>
+      import('../assetregister/assetregister/assetregister.component')
+        .then(c => c.AssetregisterComponent)
   }
 ];
