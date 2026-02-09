@@ -23,5 +23,11 @@ export const EMPLOYEE_ROUTES: Routes = [
     loadComponent: () =>
       import('./../submission-list/submission-list/submission-list.component')
         .then(c => c.SubmissionListComponent)
+  },
+  {
+    path:'raise-ticket',
+    loadComponent: ()=>
+    import('../raise-tickets/raise-tickets.component')
+    .then(c=>c.RaiseTicketsComponent)
   }
 ];
