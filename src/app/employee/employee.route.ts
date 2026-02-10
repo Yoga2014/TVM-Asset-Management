@@ -16,5 +16,21 @@ export const EMPLOYEE_ROUTES: Routes = [
     loadComponent: () =>
       import('./employee-history/employee-history.component')
         .then(c => c.HistoryComponent)
+<<<<<<< Updated upstream
+=======
+  },
+
+  {
+    path: 'submission-list',
+    loadComponent: () =>
+      import('./../submission-list/submission-list/submission-list.component')
+        .then(c => c.SubmissionListComponent)
+  },
+  {
+    path:'raise-ticket',
+    loadComponent: ()=>
+    import('../raise-tickets/raise-tickets.component')
+    .then(c=>c.RaiseTicketsComponent)
+>>>>>>> Stashed changes
   }
 ];

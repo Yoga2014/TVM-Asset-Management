@@ -1,0 +1,35 @@
+<div class="ticket-container">
+  <h2>Raise Ticket</h2>
+
+  <form [formGroup]="ticketForm" (ngSubmit)="submit()">
+
+    <label>Employee Name</label>
+    <input type="text" formControlName="employeeName" [disabled]="true" />
+
+    <label>Asset ID</label>
+    <input type="text" formControlName="assetId" [disabled]="true" />
+
+    <label>Category</label>
+    <select formControlName="category">
+      <option value="">Select</option>
+      <option value="Laptop">Laptop</option>
+      <option value="Mobile">Mobile</option>
+      <option value="Charger">Charger</option>
+      <option value="Simcard">Sim card</option>
+    </select>
+
+    <label>Description</label>
+    <textarea rows="3" formControlName="description"></textarea>
+
+    <label>Upload Images</label>
+    <input type="file" multiple accept="image/*" (change)="onFileSelect($event)" />
+
+    <!-- Image Preview -->
+    <div class="preview" *ngIf="imagePreviews.length">
+      <img *ngFor="let img of imagePreviews" [src]="img" />
+    </div>
+
+    <button type="submit">Submit</button>
+
+  </form>
+</div>
