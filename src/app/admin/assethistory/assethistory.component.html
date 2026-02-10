@@ -1,1 +1,85 @@
-<p>asset history works!</p>
+<div class="container">
+
+  <h2>Asset Management</h2>
+
+  <!-- Search -->
+  <input
+    class="search"
+    type="text"
+    placeholder="Search by asset / imei / person"
+    [value]="searchText()"
+    (input)="searchText.set($any($event.target).value)"
+  />
+
+  <!-- Asset Table -->
+  <div class="card">
+    <table class="asset-table">
+      <thead>
+        <tr>
+          <th>Asset ID</th>
+          <th>Name</th>
+          <th>IMEI</th>
+          <th>Status</th>
+          <th>History</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of uniqueAssets()">
+          <td>{{ item.assetId }}</td>
+          <td>{{ item.assetName }}</td>
+          <td>{{ item.imeiNumber }}</td>
+
+          <td>
+            <span
+              class="badge"
+              [class.assigned]="item.isAssigned"
+              [class.available]="!item.isAssigned"
+            >
+              {{ item.isAssigned ? 'Assigned' : 'Available' }}
+            </span>
+          </td>
+
+          <td>
+            <button class="btn" (click)="showHistory(item.assetId)">
+              View History
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- History Panel -->
+  <div *ngIf="selectedAssetId()" class="card history">
+
+    <div class="history-header">
+      <h3>History for {{ selectedAssetId() }}</h3>
+      <button class="btn close" (click)="closeHistory()">Close</button>
+    </div>
+
+    <table class="asset-table small">
+      <thead>
+        <tr>
+          <th>Person</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Status</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let h of selectedHistory()">
+          <td>{{ h.assignedTo }}</td>
+          <td>{{ h.assignedFrom | date:'mediumDate' }}</td>
+          <td>{{ h.assignedToDate ? (h.assignedToDate | date:'mediumDate') : 'Present' }}</td>
+          <td>{{ h.isAssigned ? 'Current' : 'Completed' }}</td>
+          <td>{{ h.remarks }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
