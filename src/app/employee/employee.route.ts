@@ -17,6 +17,7 @@ export const EMPLOYEE_ROUTES: Routes = [
       import('./employee-history/employee-history.component')
         .then(c => c.HistoryComponent)
   },
+
   {
     path: 'submission-list',
     loadComponent: () =>

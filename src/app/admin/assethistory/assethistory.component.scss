@@ -1,0 +1,94 @@
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+/* Search */
+.search {
+  width: 300px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+/* Table */
+.asset-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.asset-table th {
+  background: #f5f5f5;
+  padding: 10px;
+  text-align: left;
+}
+
+.asset-table td {
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+.asset-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 12px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #125ea7;
+}
+
+.close {
+  background: #e53935;
+}
+
+/* Badges */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: white;
+  font-size: 12px;
+}
+
+.assigned {
+  background: #4caf50;
+}
+
+.available {
+  background: #ff9800;
+}
+
+/* History */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.small th,
+.small td {
+  font-size: 14px;
+}

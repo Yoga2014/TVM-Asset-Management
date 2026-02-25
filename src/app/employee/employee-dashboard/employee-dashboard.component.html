@@ -1,1 +1,42 @@
-<p>employee-dashboard works!</p>
+<div class="dashboard">
+
+  <!-- PROFILE -->
+  <mat-card>
+    <h2>My Profile</h2>
+
+    <form [formGroup]="profileForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Department</mat-label>
+        <input matInput formControlName="department">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="saveProfile()">
+        Save Changes
+      </button>
+    </form>
+  </mat-card>
+
+  <!-- READ-ONLY INFO -->
+  <mat-card>
+    <h2>Employment Details</h2>
+    <p><strong>Role:</strong> {{ employee.role }}</p>
+    <p><strong>Status:</strong> {{ employee.status }}</p>
+    <p><strong>Joining Date:</strong> {{ employee.joiningDate }}</p>
+  </mat-card>
+
+  <!-- PERFORMANCE -->
+  <app-performance-chart
+    [data]="performanceData">
+  </app-performance-chart>
+
+</div>
