@@ -1,18 +1,18 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { TicketService } from '../assigned-tickets/ticket.service';
+import { Ticket } from '../assigned-tickets/ticket.model';
+
 
 @Component({
   selector: 'app-raise-tickets',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './raise-tickets.component.html',
   styleUrl: './raise-tickets.component.scss'
 })
 export class RaiseTicketsComponent {
-
-  imageFiles: File[] = [];
-  imagePreviews: string[] = [];
 
   ticketForm = this.fb.group({
     employeeName: ['Sindhuja'],
@@ -21,30 +21,24 @@ export class RaiseTicketsComponent {
     description: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private ticketService: TicketService) {}
 
   submit() {
     if (this.ticketForm.valid) {
-      console.log('Form Data:', this.ticketForm.value);
-      console.log('Uploaded Images:', this.imageFiles);
-      alert('Ticket Raised Successfully!');
-    }
-  }
 
-  onFileSelect(event: any) {
-    const files: FileList = event.target.files;
-
-    this.imageFiles = [];
-    this.imagePreviews = [];
-
-    Array.from(files).forEach(file => {
-      this.imageFiles.push(file);
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreviews.push(reader.result as string);
+      const newTicket: Ticket = {
+        id: Date.now(),
+        employeeName: this.ticketForm.value.employeeName!,
+        assetId: this.ticketForm.value.assetId!,
+        category: this.ticketForm.value.category!,
+        description: this.ticketForm.value.description!,
+        status: 'Open'
       };
-      reader.readAsDataURL(file);
-    });
+
+      this.ticketService.addTicket(newTicket);
+
+      alert('Ticket Raised Successfully!');
+      this.ticketForm.reset();
+    }
   }
 }

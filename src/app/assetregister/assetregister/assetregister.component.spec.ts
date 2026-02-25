@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AssetregisterComponent } from './assetregister.component';
 
@@ -8,13 +9,15 @@ describe('AssetregisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AssetregisterComponent]
-    })
-    .compileComponents();
-    
+      declarations: [AssetregisterComponent],
+      imports: [NoopAnimationsModule]
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(AssetregisterComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges();   // ✅ Important
   });
 
   it('should create', () => {

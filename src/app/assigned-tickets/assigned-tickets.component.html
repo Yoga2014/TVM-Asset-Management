@@ -1,0 +1,22 @@
+<div class="ticket-container">
+  <h2>Assigned Tickets</h2>
+
+  <h3>Open Tickets</h3>
+  <div *ngFor="let ticket of openTickets" class="ticket-card open">
+    <p><strong>Employee:</strong> {{ticket.employeeName}}</p>
+    <p><strong>Asset:</strong> {{ticket.assetId}}</p>
+    <p><strong>Category:</strong> {{ticket.category}}</p>
+    <p><strong>Description:</strong> {{ticket.description}}</p>
+    <p><strong>Status:</strong> {{ticket.status}}</p>
+
+    <button (click)="closeTicket(ticket.id)">Close Ticket</button>
+  </div>
+
+  <h3>Closed Tickets</h3>
+  <div *ngFor="let ticket of closedTickets" class="ticket-card closed">
+    <p><strong>Employee:</strong> {{ticket.employeeName}}</p>
+    <p><strong>Asset:</strong> {{ticket.assetId}}</p>
+    <p><strong>Status:</strong> {{ticket.status}}</p>
+  </div>
+
+</div>
