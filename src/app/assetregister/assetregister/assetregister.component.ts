@@ -131,7 +131,7 @@ submit(): void {
     id: formValue.assetId,
     category: formValue.category,
     assignedDate: formValue.assignedDate,
-    status: 'Excellent' as 'Excellent' // default
+    status: 'Excellent' as 'Excellent' 
   };
 
   this.assetService.addAsset(asset);
