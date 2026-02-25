@@ -1,1 +1,59 @@
-<p>employee history works!</p>
+<div class="container">
+
+  <h2>Employee Asset History</h2>
+
+  <!-- Search -->
+  <div class="search-box">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Search Employee or Asset"
+    />
+    <button (click)="onSearch()">Search</button>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading">Loading...</div>
+
+  <!-- Empty -->
+  <div *ngIf="!loading && data.length === 0">
+    No Records Found
+  </div>
+
+  <!-- Table -->
+  <table *ngIf="!loading && data.length > 0">
+    <thead>
+      <tr>
+        <th (click)="onSort('employeeName')">Employee</th>
+        <th (click)="onSort('assetName')">Asset</th>
+        <th (click)="onSort('assignedDate')">Assigned Date</th>
+        <th>Returned Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.employeeName }} ({{ item.employeeId }})</td>
+        <td>{{ item.assetName }} ({{ item.assetTag }})</td>
+        <td>{{ item.assignedDate }}</td>
+        <td>{{ item.returnedDate || '-' }}</td>
+        <td>
+          <span [ngClass]="item.status === 'ASSIGNED' ? 'assigned' : 'returned'">
+            {{ item.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button
+      *ngFor="let p of [].constructor(totalPages); let i = index"
+      (click)="onPageChange(i + 1)">
+      {{ i + 1 }}
+    </button>
+  </div>
+
+</div>

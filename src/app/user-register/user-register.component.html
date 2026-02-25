@@ -1,0 +1,47 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<input type="text" formControlName="firstName" placeholder="Enter first name">
+<div *ngIf="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid">
+<small style="color:red">First name  is required</small>
+</div>
+<input type="text" formControlName="lastName" placeholder="Enter last name">
+<div *ngIf="registerForm.get('lastName')?.touched && registerForm.get('lastName')?.invalid">
+<small style="color:red">Last name is required</small>
+</div>
+<input type="email" formControlName="email" placeholder="Enter email">
+<div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+<small style="color:red">Email is required</small>
+</div>
+<input type="password" formControlName="password" placeholder="Enter password">
+<div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+<small style="color:red">Password is required</small>
+</div>
+<input type="password" formControlName="confirmPassword" placeholder="Enter confirm password">
+<div *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid">
+<small style="color:red">confirmPassword is required</small>
+</div>
+<input type="number" formControlName="phone" placeholder="Enter phone">
+<div *ngIf="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid">
+<small style="color:red">phone is required</small>
+</div>
+<select formControlName="role">
+    <option value="">Select role</option>
+    <option value="User">User</option>
+    <option value="Admin">Admin</option>
+</select>
+<div *ngIf="registerForm.get('role')?.touched && registerForm.get('role')?.invalid">
+<small style="color:red">role is required</small>
+</div>
+<label class="checkbox">
+  <input type="checkbox" formControlName="acceptTerms">
+  I accept terms & conditions
+</label>
+<div *ngIf="registerForm.get('acceptTerms')?.touched && registerForm.get('acceptTerms')?.invalid">
+<small style="color:red">acceptTerms is required</small>
+</div>
+<div *ngIf="roleSignal()==='Admin'"><input type="text" formControlName="adminCode" placeholder="Enter adminCode">
+<div *ngIf="registerForm.get('adminCode')?.touched && registerForm.get('adminCode')?.invalid">
+<small style="color:red">adminCode is required</small>
+</div></div>
+
+<button type="submit" [disabled]="!isFormValid()" >Submit</button>
+</form >

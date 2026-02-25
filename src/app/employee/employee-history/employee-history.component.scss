@@ -1,0 +1,37 @@
+.container {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+  background: #f5f5f5;
+}
+
+.assigned {
+  color: green;
+  font-weight: bold;
+}
+
+.returned {
+  color: red;
+  font-weight: bold;
+}
+
+.search-box {
+  margin-bottom: 10px;
+}
+
+.pagination button {
+  margin: 5px;
+}

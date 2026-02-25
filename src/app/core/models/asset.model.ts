@@ -26,3 +26,15 @@ export interface AssetHistory {
 
   remarks?: string;
 }
+
+
+export interface EmployeeAssetHistory {
+  id: number;
+  employeeName: string;
+  employeeId: string;
+  assetName: string;
+  assetTag: string;
+  assignedDate: string;
+  returnedDate?: string;
+  status: 'ASSIGNED' | 'RETURNED';
+}

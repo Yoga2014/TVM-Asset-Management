@@ -1,0 +1,94 @@
+/* Full page center layout */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Form card */
+form {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inputs & Select */
+input,
+select {
+  padding: 10px 12px;
+  margin-top: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+/* Focus effect */
+input:focus,
+select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+/* Checkbox styling */
+input[type='checkbox'] {
+  width: auto;
+  margin-right: 6px;
+  margin-top: 16px;
+}
+
+/* Error message */
+small {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #e53935;
+}
+
+/* Invalid field highlight */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #e53935;
+  background-color: #fff5f5;
+}
+
+/* Submit button */
+button {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background: #667eea;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Button hover */
+button:hover:not(:disabled) {
+  background: #5a67d8;
+}
+
+/* Disabled button */
+button:disabled {
+  background: #b0b0b0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.checkbox {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
